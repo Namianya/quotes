@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_dart.dart';
 
 void main() => runApp(MaterialApp(
   home: QuoteList(),
@@ -20,34 +21,6 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: 'jack', text: 'when an unknown printer took a galley of type and scrambled it to make a type specimen book')
   ];
 
-  Widget quoteTemplet(quote) {
-    return Card(
-      margin: EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(height: 7,),
-            Text(
-              quote.author,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.redAccent
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +33,7 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) => quoteTemplet(quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
